@@ -1,0 +1,21 @@
+<!-- play_round.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play Round</title>
+</head>
+<body>
+    <h1>Question {{ question_number }}</h1>
+    <h2>Score: {{ score }}</h2>
+    <p>What is the name of this track?</p>
+    <p>{{ track[0] }}</p>
+    <form action="{{ url_for('submit_guess') }}" method="post">
+        <input type="text" name="guess" required>
+        <input type="hidden" name="chances" value="3">
+        <input type="submit" value="Submit Guess">
+    </form>
+</body>
+</html>
