@@ -1,3 +1,15 @@
+import subprocess 
+import sys 
+
+def install(package):
+    subprocess.check_call([sys.executable, "-m", "pip", "install", package]) 
+    
+try: 
+    import spotipy 
+except ImportError: 
+    print("Spotipy not found. Installing...") 
+    install("spotipy") 
+
 from flask import Flask, render_template, request, redirect, url_for, session
 import random
 import secrets
@@ -59,16 +71,10 @@ def play_quiz():
     session['current_track_index'] = 0
     return redirect(url_for('play_round'))
 
-# @app.route('/play_round')
-# def play_round():
-#     if 'random_tracks' not in session or session['current_track_index'] >= 10:
-#         return redirect(url_for('quiz'))
-#     current_track = session['random_tracks'][session['current_track_index']]
-#     return render_template('play_round.html', track=current_track, chances=3)
 @app.route('/play_round')
 def play_round():
     if 'random_tracks' not in session or session['current_track_index'] >= 10:
-        return redirect(url_for('quiz'))
+        return redirect(url_for('score_sheet'))
 
     # Get the current question number
     question_number = session['current_track_index'] + 1
@@ -91,24 +97,34 @@ def play_round():
     sp.start_playback(device_id=DEVICE_ID, uris=[track_uri])
 
     # Render the play_round template with the current track information
-    return render_template('play_round.html', track=current_track, chances=3, question_number=question_number, score=score)
-
-
+    chances = session.get('chances', 3)
+    return render_template('play_round.html', track=current_track, chances=chances, question_number=question_number, score=score)
 
 @app.route('/submit_guess', methods=['POST'])
 def submit_guess():
     guess = request.form['guess'].strip().lower()
     current_track_index = session['current_track_index']
     current_track = session['random_tracks'][current_track_index]
+    score = session['score']
+    question_number = current_track_index + 1
     if guess == current_track[0].lower():
         session['score'] += 1
         session['current_track_index'] += 1
+        session.pop('chances', None)  # Reset chances for next track
         return redirect(url_for('play_round'))
     else:
-        chances = int(request.form['chances']) - 1
+        chances = session.get('chances', 3) - 1
+        session['chances'] = chances
         if chances == 0:
             session['current_track_index'] += 1
-        return render_template('play_round.html', track=current_track, chances=chances)
+            session.pop('chances', None)  # Reset chances for next track
+            return redirect(url_for('play_round'))
+        return render_template('play_round.html', track=current_track, chances=chances, question_number=question_number, score=score)
+
+@app.route('/score_sheet')
+def score_sheet():
+    score = session.get('score', 0)
+    return render_template('score_sheet.html', score=score)
 
 def get_random_songs(sp, artist_name, limit=10):
     results = sp.search(q=f'artist:{artist_name}', type='track', limit=50, market='US')

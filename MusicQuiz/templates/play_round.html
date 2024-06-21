@@ -8,13 +8,13 @@
     <title>Play Round</title>
 </head>
 <body>
-    <h1>Question {{ question_number }}</h1>
+    <h1>Song {{ question_number }}</h1>
     <h2>Score: {{ score }}</h2>
+    <p>Chances left: {{ chances }}</p>
     <p>What is the name of this track?</p>
-    <p>{{ track[0] }}</p>
     <form action="{{ url_for('submit_guess') }}" method="post">
         <input type="text" name="guess" required>
-        <input type="hidden" name="chances" value="3">
+        <input type="hidden" name="chances" value="{{ chances }}">
         <input type="submit" value="Submit Guess">
     </form>
 </body>
