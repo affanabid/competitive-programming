@@ -1,0 +1,27 @@
+🚀 Excited to Share My Latest Project: Spotify Music Quiz App! 🎵
+
+I am thrilled to introduce my latest project, a Spotify Music Quiz App designed to test your knowledge of music while having fun! This app leverages the powerful Spotify API to create an engaging quiz experience where users guess the names of random tracks by their favorite artists.
+
+How It Works:
+
+User Authentication: Users enter their Spotify credentials to authenticate securely.
+Artist Selection: After logging in, users can choose an artist.
+Quiz Gameplay: The app randomly selects 10 tracks by the chosen artist, and users have to guess the track names. Each track gives three chances to guess correctly.
+Score Tracking: The user's score is updated in real-time, and a final score is displayed at the end of the quiz.
+Significance:
+This app is not just a fun way to challenge your music knowledge but also a demonstration of integrating third-party APIs to enhance user experience. It serves as a practical example of creating interactive web applications using modern web technologies.
+
+Tech Stack:
+
+Flask: Backend framework to handle routing and server-side logic.
+Spotipy: Python library for Spotify's Web API.
+HTML/CSS: Basic front-end to structure and style the web pages.
+Sessions: For managing user state and progress throughout the quiz.
+Random: For selecting random tracks for the quiz.
+I must mention that my primary focus was on developing robust backend logic and ensuring seamless integration with Spotify's API. As a result, the frontend is kept simple and functional.
+
+I am excited about the possibilities this app presents and look forward to enhancing it further. If you have any suggestions or feedback, feel free to reach out!
+
+
+
+I just finished a new project – a Spotify Music Quiz App! You can guess the names of random tracks by your favorite artists and score points. Check out all the details on my LinkedIn post! [Swipe up/link]

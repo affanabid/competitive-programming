@@ -82,6 +82,7 @@ def play_round():
                                                    scope=scope,
                                                    cache_handler=spotipy.cache_handler.MemoryCacheHandler(session['token_info'])))
     data = sp.devices()
+    print(data)
     DEVICE_ID = data['devices'][0]['id']
     sp.start_playback(device_id=DEVICE_ID, uris=[track_uri])
 
