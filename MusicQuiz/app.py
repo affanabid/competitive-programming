@@ -1,15 +1,3 @@
-import subprocess 
-import sys 
-
-def install(package):
-    subprocess.check_call([sys.executable, "-m", "pip", "install", package]) 
-    
-try: 
-    import spotipy 
-except ImportError: 
-    print("Spotipy not found. Installing...") 
-    install("spotipy") 
-
 from flask import Flask, render_template, request, redirect, url_for, session
 import random
 import secrets
@@ -20,7 +8,8 @@ app = Flask(__name__)
 app.secret_key = secrets.token_hex(16)
 
 redirect_uri = 'http://127.0.0.1:5000/callback'
-scope = 'user-read-playback-state'
+# scope = 'user-read-playback-state'
+scope = 'user-read-playback-state user-modify-playback-state'
 
 @app.route('/')
 def index():
@@ -134,6 +123,7 @@ def get_random_songs(sp, artist_name, limit=10):
     random_tracks = random.sample(tracks, min(limit, len(tracks)))
     track_results = [(track['name'], track['uri']) for track in random_tracks]
     return track_results
+
 
 if __name__ == '__main__':
     app.run(debug=True)
