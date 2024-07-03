@@ -15,7 +15,7 @@ class Solution:
 
         self.helper_rec(current.next, val)
 
-    def removeElements(self, head: Optional[ListNode], val: int) -> Optional[ListNode]:
+    def removeElements(self, head, val):
         if head is None:
             return None
         dummy = ListNode(0)
