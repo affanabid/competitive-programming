@@ -14,7 +14,7 @@ class Solution:
         prev = current
         current = temp
         return self.helper_recursive(prev, current)
-    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+    def reverseList(self, head):
         if head is None:
             return None
         if head.next is None:
