@@ -23,7 +23,7 @@ class Solution:
             list1 = list2
             list2 = nextNode
 
-    def reorderList(self, head: Optional[ListNode]) -> None:
+    def reorderList(self, head) -> None:
         if not head or not head.next:
             return 
         prev = head
