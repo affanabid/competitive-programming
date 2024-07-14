@@ -1,5 +1,5 @@
 class Solution:
-    def twoSum(self, nums: List[int], target: int) -> List[int]:
+    def twoSum(self, nums, target):
         nums2 = sorted(nums)
         i = 0
         n = len(nums2) -1
