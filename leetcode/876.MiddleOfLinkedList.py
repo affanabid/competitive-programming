@@ -12,3 +12,4 @@ class Solution:
             curr2 = curr2.next.next
         return curr1
             
+            

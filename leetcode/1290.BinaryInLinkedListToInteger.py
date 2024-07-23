@@ -4,7 +4,7 @@
 #         self.val = val
 #         self.next = next
 class Solution:
-    def getDecimalValue(self, head: ListNode) -> int:
+    def getDecimalValue(self, head) -> int:
         arr = []
         curr = head
         while curr:
