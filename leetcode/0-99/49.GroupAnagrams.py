@@ -7,4 +7,4 @@ class Solution:
                 seen[so] = [s]
             else:
                 seen[so].append(s)
-        return seen.values()
+        return seen.values() 
