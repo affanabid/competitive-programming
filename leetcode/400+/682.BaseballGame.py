@@ -2,7 +2,7 @@ class Solution:
     def is_number(self, string):
         return string.strip('-').isdigit() and string.strip() != ''
 
-    def calPoints(self, operations: List[str]) -> int:
+    def calPoints(self, operations):
         stack = []
         for i in range(len(operations)):
             op = operations[i]
