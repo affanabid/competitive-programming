@@ -32,5 +32,5 @@ class Solution:
                 A[k] = R[j]
                 j += 1
 
-    def sortArray(self, nums: List[int]) -> List[int]:
+    def sortArray(self, nums):
         return self.mergeSort(nums, 0, len(nums) - 1)
