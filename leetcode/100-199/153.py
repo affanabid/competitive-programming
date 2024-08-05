@@ -10,3 +10,7 @@ class Solution:
                 r = mid
         return nums[l]
 
+
+sol = Solution()
+arr = [4,5,6,7,0,1,2]
+print(sol.findMin(arr))
