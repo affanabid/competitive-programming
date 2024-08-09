@@ -11,7 +11,7 @@ class Solution:
             
             # include nums[i]
             subset.append(nums[i])
-            depthFirstSearch(i + 1)()
+            depthFirstSearch(i + 1)
 
             # do not include nums[i]
             subset.pop()
